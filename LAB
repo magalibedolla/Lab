@@ -1,0 +1,107 @@
+
+Programmer: Magali Bedolla
+Program Name: Lab22.cpp
+Date:10/30/20
+Version:3.4
+Description: This program asks for the beginning balance and the number of checks written. It computes and displays the bank's service fee for the month.
+*/
+
+#include <iostream>
+#include<cmath>
+#include<iomanip>
+using namespace std;
+
+int main()
+{
+	// Declare section
+	int monthlyFee = 10;
+	int balanceMinimum = 400;
+	int lowBalance=15;
+	int checkWritten=0;
+	double fees=0;
+	double checkFee=0;
+	double beginningBalance=0;
+	double currentBalance=0;
+
+	//Input Section
+	cout << "What is your current balance: " << endl;
+	cin >> beginningBalance;
+	
+	//the user gets a warning if the balance is less than 0
+	if (beginningBalance < 0)
+	{
+		cout << "URGENT: YOU HAVE AN OVERDRAWN ACCOUNT" << endl;
+	}
+	//the if statement here is used if the person has less than $400 in their account.
+	if(beginningBalance< balanceMinimum)
+	{
+		cout << "Because your balance is less than $400 there is a $15 fee."<< endl;
+		currentBalance = beginningBalance - lowBalance;
+		cout << " Your balance is now:$ " << currentBalance << endl;
+	}
+	else if (beginningBalance > balanceMinimum ||beginningBalance== balanceMinimum)
+	{
+		currentBalance = beginningBalance-0;
+		cout << "Your balance is :$" << currentBalance << endl;
+	}
+	//Here it tells the user to enter how many checks they wrote
+	cout << "How many checks did you write?\n";
+	cin >> checkWritten;
+
+	while (checkWritten < 0)
+	{
+		cout << "Please enter a positive amount of checks used.\n";
+		cin >> checkWritten;
+	}
+
+	if (checkWritten ==0 || checkWritten < 20)
+	{
+		checkFee = checkWritten * .10;
+		cout << "This is the fee for the checks:$ " << checkFee << endl;
+		cout << " There is also a $ " << monthlyFee << " monthly fee for a commercial checking account.\n";
+		fees = checkFee + monthlyFee;
+		cout << " Your total fees are $" << fees << " which includes the monthly fee and the fees for the checks written\n";
+		currentBalance = currentBalance - fees;
+		cout << " Your current balance is now $ " << currentBalance << endl;
+	
+	}
+
+	else if (checkWritten >= 20  && checkWritten <= 39)
+	{
+		checkFee = checkWritten * .08;
+		cout << "This is the fee for the checks:$ " << checkFee << endl;
+		cout << " There is also a $ " << monthlyFee << " monthly fee for a commercial checking account.\n";
+		fees = checkFee + monthlyFee;
+		cout << " Your total fees are $" << fees << " which includes the monthly fee and the fees for the checks written\n";
+		currentBalance = currentBalance - fees;
+		cout << " Your current balance is now $ " << currentBalance << endl;
+		
+	}
+
+	else if (checkWritten >= 40 && checkWritten <= 59)
+	{
+		checkFee = checkWritten * .06;
+		cout << "This is the fee for the checks:$ " << checkFee << endl;
+		cout << " There is also a $ " << monthlyFee << " monthly fee for a commercial checking account.\n";
+		fees = checkFee + monthlyFee;
+		cout << " Your total fees are $" << fees << " which includes the monthly fee and the fees for the checks written\n";
+		currentBalance = currentBalance - fees;
+		cout << " Your current balance is now $ " << currentBalance << endl;
+
+	}
+
+	else if (checkWritten >= 60)
+	{
+		checkFee = checkWritten * .04;
+		cout << "This is the fee for the checks:$ " << checkFee << endl;
+		cout << " There is also a $ " << monthlyFee << " monthly fee for a commercial checking account.\n";
+		fees = checkFee + monthlyFee;
+		cout << " Your total fees are $" << fees << " which includes the monthly fee and the fees for the checks written\n";
+		currentBalance = currentBalance - fees;
+		cout << " Your current balance is now $ " << currentBalance << endl;
+		
+	}
+
+	return 0;
+
+}
